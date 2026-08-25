@@ -22,7 +22,7 @@ def get_bge_m3_ef():
 
     return _bge_m3_ef
 
-def generate_embeddings(texts ):
+def generate_embeddings(texts):
     """
     为文本生成向量嵌入
     :param texts: 要生成嵌入的文本列表

@@ -1,4 +1,3 @@
-import os
 from pymilvus import MilvusClient
 
 from config.milvus_config import milvus_config
@@ -30,3 +29,4 @@ def escape_milvus_string(value: str) -> str:
     # 转义反斜杠（\ → \\） 双引号（" → \"） 单引号（' → \'）
     value = value.replace("\\", "\\\\").replace('"', '\\"').replace("'", "\\'")
     return value
+
