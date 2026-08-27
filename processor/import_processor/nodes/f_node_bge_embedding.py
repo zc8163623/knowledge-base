@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 from typing import Dict, List
 
 from processor.import_processor.base import BaseNode
@@ -27,7 +26,9 @@ class NodeBGEEmbedding(BaseNode):
             print(f"item_name:{item_name}\n{content}")
             sparse_vector = item["sparse_vector"]
             print(f"sparse_vector:{sparse_vector}")
-
+        path = "E:\output\H3C\H3C_new_new_new_chunks.json"
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(output_data, f, ensure_ascii=False, indent=2)
 
         # 3 返回结果
         state["chunks"] = output_data
@@ -44,6 +45,7 @@ class NodeBGEEmbedding(BaseNode):
             raise StateFieldError(field_name="chunks", message="chunks数据类型不正确", expected_type=list)
 
         return chunks
+
     # 步骤2
     def _step_2_generate_embeddings(self, chunks:List[Dict[str,str]])->List[Dict[str,str]]:
         """
