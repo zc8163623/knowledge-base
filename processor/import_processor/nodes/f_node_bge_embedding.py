@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from typing import Dict, List
 
 from processor.import_processor.base import BaseNode
@@ -20,13 +21,13 @@ class NodeBGEEmbedding(BaseNode):
 
         # 2 数据向量化
         output_data = self._step_2_generate_embeddings(chunks)
-        for item in output_data:
-            item_name = item.get("item_name")
-            content = item.get("content")
-            print(f"item_name:{item_name}\n{content}")
-            sparse_vector = item["sparse_vector"]
-            print(f"sparse_vector:{sparse_vector}")
-        path = "E:\output\H3C\H3C_new_new_new_chunks.json"
+        # for item in output_data:
+        #     item_name = item.get("item_name")
+        #     content = item.get("content")
+        #     print(f"item_name:{item_name}\n{content}")
+        #     sparse_vector = item["sparse_vector"]
+        #     print(f"sparse_vector:{sparse_vector}")
+        path = f"{Path(state.get('md_path')).parent}/{state.get('file_title')}_new_new_new_chunks.json"
         with open(path, "w", encoding="utf-8") as f:
             json.dump(output_data, f, ensure_ascii=False, indent=2)
 

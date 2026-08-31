@@ -1,18 +1,5 @@
-import json
+from utils.mongo_history_utils import get_history_mongo_tool
 
-from pymongo import MongoClient
+mongo_client = get_history_mongo_tool()
 
-mogo_client = MongoClient("mongodb://192.168.10.150:27017")
-
-db = mogo_client["test"]
-# 创建集合
-# db.create_collection("classes")
-
-# 插入数据
-# db["classes"].insert_one({"name":"0525", "age":1})
-
-# 查询数据
-find_result = db["classes"].find()
-for doc in find_result:
-    print(doc)
-    print(doc["name"])
+mongo_client.chat_message.insert_one({"session_id": 1, "massage": "hello", "ts": 1234567890})

@@ -112,7 +112,9 @@ class KBQueryWorkflow:
 
 if __name__ == "__main__":
     workflow = KBQueryWorkflow()
-    response = workflow.run({"original_query": "哥们儿，H3C这东东咋鼓捣上啊？"}, stream=True)
-    print(response)
+    response = workflow.run({"original_query": "哥们儿，华为B3-211H显示器这东东咋鼓捣上啊？", "session_id":"124"}, stream=False)
+    # print(response)
+    for res in response:
+        print(res)
     # 画图
-    print(workflow.compile().get_graph().draw_ascii())
+    # print(workflow.compile().get_graph().draw_ascii())

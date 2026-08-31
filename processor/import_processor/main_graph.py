@@ -87,9 +87,9 @@ if __name__=="__main__":
     setup_logging()
     workflow = KBImportWorkflow()
 
-    init_state = {"import_file_path":r"E:\BaiduNetdiskDownload\掌柜智库课件0525\2.资料\H3C.md"}
+    init_state = {"import_file_path":r"E:\华为擎云B730 用户指南-(PUCZ,Windows11_03,zh-cn).pdf"}
     for event in workflow.run(init_state, stream=True):
-        print(F"state:{event}")
+        print(f"state:{event}")
 
     # final_state = workflow.run(init_state, stream=False)
     # print(json.dumps(final_state, ensure_ascii=False, indent=4))

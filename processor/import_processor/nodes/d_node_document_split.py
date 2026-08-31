@@ -244,7 +244,7 @@ class NodeDocumentSplit(BaseNode):
     def _step_6_backup(self, state, sections):
         print("node_document_split:步骤6：备份")
 
-        path = Path(state.get("md_path")).parent / f'{state.get("file_title")}_chunks.json'
+        path = Path(state.get("md_path")).parent / f'{state.get("file_title")}_new_chunks.json'
         # sections切分结果输出到文档路径
         with open (path, "w", encoding="utf-8") as f:
             json.dump(
