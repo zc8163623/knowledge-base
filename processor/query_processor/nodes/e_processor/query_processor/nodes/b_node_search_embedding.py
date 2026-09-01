@@ -25,7 +25,6 @@ class NodeSearchEmbedding(NodeBase):
         """
 
         # TODO
-
         # 1 参数处理
         logger.info(f"【{self.name}】节点逻辑")
         item_names = state.get("item_names") # 元数据过滤条件
