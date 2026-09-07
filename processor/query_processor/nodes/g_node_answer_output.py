@@ -4,6 +4,7 @@ from typing import List, Dict, Tuple
 from processor.query_processor.prompt.answer_prompt import ANSWER_PROMPT
 from processor.query_processor.base import NodeBase
 from processor.query_processor.state import QueryGraphState
+from tool.logger import logger
 from utils.llm_utils import get_llm_client
 from utils.mongo_history_utils import save_chat_message
 from utils.sse_utils import push_to_session, SSEEvent
@@ -226,7 +227,7 @@ class NodeAnswerOutput(NodeBase):
                 print(f"流式输出完成，总长度: {len(final_text)}")
 
             except Exception as e:
-                print(f"流式生成出错: {e}", exc_info=True)
+                logger.error(f"流式生成出错: {e}", exc_info=True)
                 # 发生错误时，尝试推送到前端
                 push_to_session(session_id, SSEEvent.ERROR, {"error": str(e)})
 

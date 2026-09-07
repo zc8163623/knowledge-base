@@ -37,5 +37,8 @@ class NodeEntry(BaseNode):
             raise FileProcessingError(message=f"该文件的后缀格式{import_file_path_obj.suffix}不支持")
 
         state["file_title"] = import_file_path_obj.stem
-        state["file_dir"] = r"E:\output"
+
+        if not state.get("file_dir"):
+            raise StateFieldError(field_name="file_dir", expected_type=str)
+
         return state

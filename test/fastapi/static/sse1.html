@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>SSE1</title>
+    </head>
+    <body>
+        <h3>场景1：基础的sse测试</h3>
+        <div id="output"></div>
+        <button onclick="submitSSE()">点我</button>
+
+        <script>
+            function submitSSE() {
+                resultDom = document.getElementById("output"); // 页面位置
+                eventSource = new EventSource("http://localhost:8001/simple_stream"); // 连接服务器sse的地址对象
+
+                eventSource.onmessage = function (event) {
+                    if (event.data === "[END]"){
+                        eventSource.close()
+                        return;
+                    }
+                    resultDom.innerHTML += event.data + "<br/>";
+                }
+
+            }
+        </script>
+    </body>
+
+</html>
